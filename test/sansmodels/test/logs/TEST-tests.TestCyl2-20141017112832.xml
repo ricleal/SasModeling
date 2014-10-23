@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuite errors="1" failures="0" name="tests.TestCyl2-20141017112832" tests="3" time="0.222">
+	<testcase classname="tests.TestCyl2" name="test1D" time="0.220"/>
+	<testcase classname="tests.TestCyl2" name="testTime" time="0.002"/>
+	<testcase classname="tests.TestCyl2" name="test2D" time="0.000">
+		<error message="Model does not contain parameter cyl_theta" type="ValueError">
+<![CDATA[Traceback (most recent call last):
+  File "utest_models.py", line 93, in test2D
+    self.comp.setParam('cyl_theta', 10.0)
+  File "/home/rhf/code/Sasmodels/sasmodels/sasview_model.py", line 154, in setParam
+    raise ValueError, "Model does not contain parameter %s" % name
+ValueError: Model does not contain parameter cyl_theta
+]]>		</error>
+	</testcase>
+	<system-out>
+<![CDATA[cylinder
+]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

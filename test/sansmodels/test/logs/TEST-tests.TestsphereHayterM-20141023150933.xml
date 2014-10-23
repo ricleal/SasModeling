@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="tests.TestsphereHayterM-20141023150933" tests="2" time="0.002">
+	<testcase classname="tests.TestsphereHayterM" name="testMultiplicationParam" time="0.001"/>
+	<testcase classname="tests.TestsphereHayterM" name="test_multplication_radius" time="0.000"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

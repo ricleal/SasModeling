@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="1" name="tests.TestCyl2-20141017152618" tests="4" time="0.232">
+	<testcase classname="tests.TestCyl2" name="test1D" time="0.230"/>
+	<testcase classname="tests.TestCyl2" name="test2D" time="0.000"/>
+	<testcase classname="tests.TestCyl2" name="testTime" time="0.001"/>
+	<testcase classname="tests.TestCyl2" name="test2DXY" time="0.002">
+		<failure message="23.035643 != 14.89 within 2 places" type="AssertionError">
+<![CDATA[Traceback (most recent call last):
+  File "utest_models.py", line 107, in test2DXY
+    self.assertAlmostEqual(self.comp.runXY([0.01, 0.02]), 14.89, 2)
+AssertionError: 23.035643 != 14.89 within 2 places
+]]>		</failure>
+	</testcase>
+	<system-out>
+<![CDATA[CylinderModel2
+]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

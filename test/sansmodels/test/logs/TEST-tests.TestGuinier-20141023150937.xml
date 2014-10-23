@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="tests.TestGuinier-20141023150937" tests="3" time="0.000">
+	<testcase classname="tests.TestGuinier" name="test1D" time="0.000"/>
+	<testcase classname="tests.TestGuinier" name="test2D" time="0.000"/>
+	<testcase classname="tests.TestGuinier" name="test2Dphi" time="0.000"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

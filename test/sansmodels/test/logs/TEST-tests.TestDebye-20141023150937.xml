@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="tests.TestDebye-20141023150937" tests="4" time="0.001">
+	<testcase classname="tests.TestDebye" name="test1D" time="0.001"/>
+	<testcase classname="tests.TestDebye" name="test1D_clone" time="0.000"/>
+	<testcase classname="tests.TestDebye" name="test2D" time="0.000"/>
+	<testcase classname="tests.TestDebye" name="test2Dphi" time="0.000"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

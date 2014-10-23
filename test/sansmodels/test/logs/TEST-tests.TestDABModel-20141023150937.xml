@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="tests.TestDABModel-20141023150937" tests="5" time="0.002">
+	<testcase classname="tests.TestDABModel" name="test1D" time="0.001"/>
+	<testcase classname="tests.TestDABModel" name="test1D_2" time="0.000"/>
+	<testcase classname="tests.TestDABModel" name="testCriticalPoint" time="0.001"/>
+	<testcase classname="tests.TestDABModel" name="testEval_1D" time="0.000"/>
+	<testcase classname="tests.TestDABModel" name="testEval_2D" time="0.000"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

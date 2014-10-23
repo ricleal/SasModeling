@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="tests.TestSpherew-20141017145137" tests="1" time="0.006">
+	<testcase classname="tests.TestSpherew" name="test1D" time="0.006"/>
+	<system-out>
+<![CDATA[CylinderModel2
+]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

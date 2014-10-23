@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="1" name="tests.TestCyl2-20141017112652" tests="3" time="0.225">
+	<testcase classname="tests.TestCyl2" name="test1D" time="0.219"/>
+	<testcase classname="tests.TestCyl2" name="testTime" time="0.002"/>
+	<testcase classname="tests.TestCyl2" name="test2D" time="0.004">
+		<failure message="0.052822284 != 0.038176446608393366 within 2 places" type="AssertionError">
+<![CDATA[Traceback (most recent call last):
+  File "utest_models.py", line 96, in test2D
+    0.038176446608393366, 2)
+AssertionError: 0.052822284 != 0.038176446608393366 within 2 places
+]]>		</failure>
+	</testcase>
+	<system-out>
+<![CDATA[CylinderModel2
+]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

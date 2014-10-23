@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="tests.TestEvalPythonMethods-20141023150933" tests="3" time="0.010">
+	<testcase classname="tests.TestEvalPythonMethods" name="test_XY_methods" time="0.010"/>
+	<testcase classname="tests.TestEvalPythonMethods" name="test_rectangle_methods" time="0.000"/>
+	<testcase classname="tests.TestEvalPythonMethods" name="test_scalar_methods" time="0.000"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

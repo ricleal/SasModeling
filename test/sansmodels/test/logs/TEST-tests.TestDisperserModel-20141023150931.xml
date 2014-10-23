@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="tests.TestDisperserModel-20141023150931" tests="1" time="0.014">
+	<testcase classname="tests.TestDisperserModel" name="test2Disp" time="0.014"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="tests.TestCylinder-20141023150937" tests="8" time="0.016">
+	<testcase classname="tests.TestCylinder" name="test_array" time="0.009"/>
+	<testcase classname="tests.TestCylinder" name="test_clone" time="0.002"/>
+	<testcase classname="tests.TestCylinder" name="test_constant" time="0.001"/>
+	<testcase classname="tests.TestCylinder" name="test_gaussian" time="0.001"/>
+	<testcase classname="tests.TestCylinder" name="test_gaussian_zero" time="0.000"/>
+	<testcase classname="tests.TestCylinder" name="test_lognormal_zero" time="0.002"/>
+	<testcase classname="tests.TestCylinder" name="test_schulz_zero" time="0.002"/>
+	<testcase classname="tests.TestCylinder" name="test_simple" time="0.000"/>
+	<system-out>
+<![CDATA[gaussian 5575.78428543
+constant 4622.78062707 {'cyl_theta': {'npts': 35, 'type': 'gaussian', 'nsigmas': 3.0, 'width': 0.0}, 'length': {'npts': 35, 'type': 'gaussian', 'nsigmas': 3.0, 'width': 0.0}, 'radius': {'npts': 100, 'type': 'flat', 'nsigmas': 2.0, 'width': 0.25}, 'cyl_phi': {'npts': 35, 'type': 'gaussian', 'nsigmas': 3.0, 'width': 0.0}}
+model dispersion {'cyl_theta': {'npts': 35, 'type': 'gaussian', 'nsigmas': 3.0, 'width': 0.0}, 'length': {'npts': 35, 'type': 'gaussian', 'nsigmas': 3.0, 'width': 0.0}, 'radius': {'npts': 100, 'type': 'lognormal', 'nsigmas': 2.0, 'width': 0.25}, 'cyl_phi': {'npts': 35, 'type': 'gaussian', 'nsigmas': 3.0, 'width': 0.0}}
+lognormal 554.412577261
+schulz 542.23568458 {'cyl_theta': {'npts': 35, 'type': 'gaussian', 'nsigmas': 3.0, 'width': 0.0}, 'length': {'npts': 35, 'type': 'gaussian', 'nsigmas': 3.0, 'width': 0.0}, 'radius': {'npts': 100, 'type': 'schulz', 'nsigmas': 2.0, 'width': 0.25}, 'cyl_phi': {'npts': 35, 'type': 'gaussian', 'nsigmas': 3.0, 'width': 0.0}}
+]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

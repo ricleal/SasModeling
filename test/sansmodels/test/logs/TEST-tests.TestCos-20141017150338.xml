@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="tests.TestCos-20141017150338" tests="2" time="0.001">
+	<testcase classname="tests.TestCos" name="test1D" time="0.001"/>
+	<testcase classname="tests.TestCos" name="test2D" time="0.000"/>
+	<system-out>
+<![CDATA[CylinderModel2
+]]>	</system-out>
+	<system-err>
+<![CDATA[pydev debugger: Unable to find module to reload: "sansmodels.test.utest_models".
+pydev debugger: Unable to find module to reload: "sansmodels.test.utest_models".
+]]>	</system-err>
+</testsuite>
