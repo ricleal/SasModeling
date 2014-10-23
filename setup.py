@@ -14,10 +14,10 @@ try:
 except:
     try:
         import numpy
-        NUMPY_INC = os.path.join(os.path.split(numpy.__file__)[0], 
-                                 "core","include")
+        NUMPY_INC = os.path.join(os.path.split(numpy.__file__)[0],
+                                 "core", "include")
     except:
-        msg = "\nNumpy is needed to build SasView. "
+        msg = "\nNumpy is needed to build SasModeling. "
         print msg, "Try easy_install numpy.\n  %s" % str(sys.exc_value)
         sys.exit(0)
 
@@ -32,13 +32,13 @@ ext_modules = []
 # We do this here because application updates these files from .sansview
 # except when there is no such file
 # Todo : make this list generic
-plugin_model_list = ['polynominal5.py', 'sph_bessel_jn.py', 
-                     'sum_Ap1_1_Ap2.py', 'sum_p1_p2.py', 
+plugin_model_list = ['polynominal5.py', 'sph_bessel_jn.py',
+                     'sum_Ap1_1_Ap2.py', 'sum_p1_p2.py',
                      'testmodel_2.py', 'testmodel.py',
-                     'polynominal5.pyc', 'sph_bessel_jn.pyc', 
-                     'sum_Ap1_1_Ap2.pyc', 'sum_p1_p2.pyc', 
+                     'polynominal5.pyc', 'sph_bessel_jn.pyc',
+                     'sum_Ap1_1_Ap2.pyc', 'sum_p1_p2.pyc',
                      'testmodel_2.pyc', 'testmodel.pyc', 'plugins.log']
-sans_dir = os.path.join(os.path.expanduser("~"),'.sasview')
+sans_dir = os.path.join(os.path.expanduser("~"), '.sasview')
 if os.path.isdir(sans_dir):
     f_path = os.path.join(sans_dir, "sasview.log")
     if os.path.isfile(f_path):
@@ -53,18 +53,18 @@ if os.path.isdir(sans_dir):
     if os.path.isdir(f_path):
         for f in os.listdir(f_path): 
             if f in plugin_model_list:
-                file_path =  os.path.join(f_path, f)
+                file_path = os.path.join(f_path, f)
                 os.remove(file_path)
                     
 # 'sys.maxsize' and 64bit: Not supported for python2.5
 is_64bits = False
 if sys.version_info >= (2, 6):
-    is_64bits = sys.maxsize > 2**32
+    is_64bits = sys.maxsize > 2 ** 32
     
     
 enable_openmp = True
 
-if sys.platform =='darwin':
+if sys.platform == 'darwin':
     if not is_64bits:
         # Disable OpenMP
         enable_openmp = False
@@ -78,10 +78,10 @@ if sys.platform =='darwin':
             print "PROBLEM determining Darwin version"
 
 # Options to enable OpenMP
-copt =  {'msvc': ['/openmp'],
+copt = {'msvc': ['/openmp'],
          'mingw32' : ['-fopenmp'],
          'unix' : ['-fopenmp']}
-lopt =  {'msvc': ['/MANIFEST'],
+lopt = {'msvc': ['/MANIFEST'],
          'mingw32' : ['-fopenmp'],
          'unix' : ['-lgomp']}
 
@@ -90,7 +90,7 @@ platform_lopt = {'msvc' : ['/MANIFEST']}
 platform_copt = {}
 
 # Set copts to get compile working on OS X >= 10.9 using clang
-if sys.platform =='darwin':
+if sys.platform == 'darwin':
     try:
         darwin_ver = int(os.uname()[2].split('.')[0])
         if darwin_ver >= 13:
@@ -100,7 +100,7 @@ if sys.platform =='darwin':
 
 
 
-class build_ext_subclass( build_ext ):
+class build_ext_subclass(build_ext):
     def build_extensions(self):
         # Get 64-bitness
         c = self.compiler.compiler_type
@@ -127,22 +127,6 @@ class build_ext_subclass( build_ext ):
 
         build_ext.build_extensions(self)
 
-class BuildSphinxCommand(Command):
-    description = "Build Sphinx documentation."
-    user_options = []
-
-    def initialize_options(self):
-        self.cwd = None
-
-    def finalize_options(self):
-        self.cwd = os.getcwd()
-
-    def run(self):        
-        build_sphinx.clean()
-        build_sphinx.retrieve_user_docs()
-        build_sphinx.apidoc()
-        build_sphinx.build()
-
 # Other
 numpy_incl_path = os.path.join(NUMPY_INC, "numpy")
 
@@ -153,30 +137,30 @@ packages.append("sans")
 
 
 # Sans models
-includedir  = os.path.join("src", "sans", "models", "include")
+includedir = os.path.join("src", "sans", "models", "include")
 igordir = os.path.join("src", "sans", "models", "c_extension", "libigor")
 cephes_dir = os.path.join("src", "sans", "models", "c_extension", "cephes")
 c_model_dir = os.path.join("src", "sans", "models", "c_extension", "c_models")
-smear_dir  = os.path.join("src", "sans", "models", "c_extension", "c_smearer")
-gen_dir  = os.path.join("src", "sans", "models", "c_extension", "c_gen")
-wrapper_dir  = os.path.join("src", "sans", "models", "c_extension", "python_wrapper", "generated")
-model_dir = os.path.join("src", "sans","models")
+smear_dir = os.path.join("src", "sans", "models", "c_extension", "c_smearer")
+gen_dir = os.path.join("src", "sans", "models", "c_extension", "c_gen")
+wrapper_dir = os.path.join("src", "sans", "models", "c_extension", "python_wrapper", "generated")
+model_dir = os.path.join("src", "sans", "models")
 
 if os.path.isdir(wrapper_dir):
     for file in os.listdir(wrapper_dir): 
-        file_path =  os.path.join(wrapper_dir, file)
+        file_path = os.path.join(wrapper_dir, file)
         os.remove(file_path)
 else:
     os.makedirs(wrapper_dir)
 sys.path.append(os.path.join("src", "sans", "models", "c_extension", "python_wrapper"))
 from wrapping import generate_wrappers
-generate_wrappers(header_dir = includedir, 
-                  output_dir = model_dir,
-                  c_wrapper_dir = wrapper_dir)
+generate_wrappers(header_dir=includedir,
+                  output_dir=model_dir,
+                  c_wrapper_dir=wrapper_dir)
 
 IGNORED_FILES = [".svn"]
-if not os.name=='nt':
-    IGNORED_FILES.extend(["gamma_win.c","winFuncs.c"])
+if not os.name == 'nt':
+    IGNORED_FILES.extend(["gamma_win.c", "winFuncs.c"])
 
 EXTENSIONS = [".c", ".cpp"]
 
@@ -210,19 +194,19 @@ append_file(file_list=smear_sources, dir_path=smear_dir)
 package_dir["sans.models"] = model_dir
 package_dir["sans.models.sans_extension"] = os.path.join("src", "sans", "models", "sans_extension")
 package_data['sans.models'] = [os.path.join('media', "*.*")]
-package_data['sans.models'] += [os.path.join('media','img', "*.*")]
-packages.extend(["sans.models","sans.models.sans_extension"])
+package_data['sans.models'] += [os.path.join('media', 'img', "*.*")]
+packages.extend(["sans.models", "sans.models.sans_extension"])
     
 smearer_sources = [os.path.join(smear_dir, "smearer.cpp"),
                   os.path.join(smear_dir, "smearer_module.cpp")]
 geni_sources = [os.path.join(gen_dir, "sld2i_module.cpp")]
-if os.name=='nt':
+if os.name == 'nt':
     smearer_sources.append(os.path.join(igordir, "winFuncs.c"))
     geni_sources.append(os.path.join(igordir, "winFuncs.c"))
 
 c_models = [ 
     Extension("sans.models.sans_extension.c_models",
-        sources=model_sources,                 
+        sources=model_sources,
         include_dirs=[
             igordir, includedir, c_model_dir, numpy_incl_path, cephes_dir
         ],
@@ -230,12 +214,12 @@ c_models = [
 
     # Smearer extension
     Extension("sans.models.sans_extension.smearer",
-        sources = smearer_sources,
-        include_dirs=[igordir,  smear_dir, numpy_incl_path],
+        sources=smearer_sources,
+        include_dirs=[igordir, smear_dir, numpy_incl_path],
     ),
                     
     Extension("sans.models.sans_extension.smearer2d_helper",
-        sources = [
+        sources=[
             os.path.join(smear_dir, "smearer2d_helper_module.cpp"),
             os.path.join(smear_dir, "smearer2d_helper.cpp"),
         ],
@@ -243,13 +227,13 @@ c_models = [
     ),
                     
     Extension("sans.models.sans_extension.sld2i",
-        sources = [
+        sources=[
             os.path.join(gen_dir, "sld2i_module.cpp"),
             os.path.join(gen_dir, "sld2i.cpp"),
             os.path.join(c_model_dir, "libfunc.c"),
             os.path.join(c_model_dir, "librefl.c"),
         ],
-        include_dirs=[gen_dir, includedir,  c_model_dir, numpy_incl_path],
+        include_dirs=[gen_dir, includedir, c_model_dir, numpy_incl_path],
     ),
 ]
 
@@ -284,25 +268,20 @@ required = []
    
 # Set up SasView    
 setup(
-    name="sasview",
-    version = "0.1",
-    description = "SasView application",
-    author = "University of Tennessee",
-    author_email = "sansdanse@gmail.com",
-    url = "http://sasview.org",
-    license = "PSF",
-    keywords = "small-angle x-ray and neutron scattering analysis",
-    download_url = "https://sourceforge.net/projects/sansviewproject/files/",
-    package_dir = package_dir,
-    packages = packages,
-    package_data = package_data,
-    ext_modules = ext_modules,
-    install_requires = required,
-    zip_safe = False,
-    entry_points = {
-                    'console_scripts':[
-                                       "sasview = sans.sansview.sansview:run",
-                                       ]
-                    },
-    cmdclass = {'build_ext': build_ext_subclass}
+    name="sasmodeling",
+    version="0.1",
+    description="SAS Modeling Package",
+    author="University of Tennessee",
+    author_email="sansdanse@gmail.com",
+    url="http://sasview.org",
+    license="PSF",
+    keywords="small-angle x-ray and neutron scattering analysis",
+    download_url="https://sourceforge.net/projects/sansviewproject/files/",
+    package_dir=package_dir,
+    packages=packages,
+    package_data=package_data,
+    ext_modules=ext_modules,
+    install_requires=required,
+    zip_safe=False,
+    cmdclass={'build_ext': build_ext_subclass}
     )   

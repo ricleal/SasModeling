@@ -42,3 +42,8 @@ needs:
 ```
 run.py
 ```
+
+Notes:
+------
+- Removed the build_sphinx (but non the media files in the src/sans)
+ - If to include, one needs to copy over the sasview docs/sphinx-docs folder and change the setup.py
