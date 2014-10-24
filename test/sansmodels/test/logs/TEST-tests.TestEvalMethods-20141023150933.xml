@@ -1,9 +1,0 @@
-<?xml version="1.0" ?>
-<testsuite errors="0" failures="0" name="tests.TestEvalMethods-20141023150933" tests="2" time="0.032">
-	<testcase classname="tests.TestEvalMethods" name="test_XY_methods" time="0.029"/>
-	<testcase classname="tests.TestEvalMethods" name="test_scalar_methods" time="0.003"/>
-	<system-out>
-<![CDATA[]]>	</system-out>
-	<system-err>
-<![CDATA[]]>	</system-err>
-</testsuite>

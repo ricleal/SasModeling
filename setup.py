@@ -41,18 +41,18 @@ plugin_model_list = ['polynominal5.py', 'sph_bessel_jn.py',
                      'polynominal5.pyc', 'sph_bessel_jn.pyc',
                      'sum_Ap1_1_Ap2.pyc', 'sum_p1_p2.pyc',
                      'testmodel_2.pyc', 'testmodel.pyc', 'plugins.log']
-sans_dir = os.path.join(os.path.expanduser("~"), '.sasview')
-if os.path.isdir(sans_dir):
-    f_path = os.path.join(sans_dir, "sasview.log")
+sas_dir = os.path.join(os.path.expanduser("~"), '.sasview')
+if os.path.isdir(sas_dir):
+    f_path = os.path.join(sas_dir, "sasview.log")
     if os.path.isfile(f_path):
         os.remove(f_path)
-    f_path = os.path.join(sans_dir, "serialized_cat.json")
+    f_path = os.path.join(sas_dir, "serialized_cat.json")
     if os.path.isfile(f_path):
         os.remove(f_path)
-    f_path = os.path.join(sans_dir, 'config', "custom_config.py")
+    f_path = os.path.join(sas_dir, 'config', "custom_config.py")
     if os.path.isfile(f_path):
         os.remove(f_path)
-    f_path = os.path.join(sans_dir, 'plugin_models')
+    f_path = os.path.join(sas_dir, 'plugin_models')
     if os.path.isdir(f_path):
         for f in os.listdir(f_path): 
             if f in plugin_model_list:
@@ -149,19 +149,19 @@ class BuildSphinxCommand(Command):
         build_sphinx.apidoc()
         build_sphinx.build()
 
-# sans module
-package_dir["sans"] = os.path.join("src", "sans")
-packages.append("sans")
+# sas module
+package_dir["sas"] = os.path.join("src", "sas")
+packages.append("sas")
 
-# Sans models
-includedir = os.path.join("src", "sans", "models", "include")
-igordir = os.path.join("src", "sans", "models", "c_extension", "libigor")
-cephes_dir = os.path.join("src", "sans", "models", "c_extension", "cephes")
-c_model_dir = os.path.join("src", "sans", "models", "c_extension", "c_models")
-smear_dir = os.path.join("src", "sans", "models", "c_extension", "c_smearer")
-gen_dir = os.path.join("src", "sans", "models", "c_extension", "c_gen")
-wrapper_dir = os.path.join("src", "sans", "models", "c_extension", "python_wrapper", "generated")
-model_dir = os.path.join("src", "sans", "models")
+# sas models
+includedir = os.path.join("src", "sas", "models", "include")
+igordir = os.path.join("src", "sas", "models", "c_extension", "libigor")
+cephes_dir = os.path.join("src", "sas", "models", "c_extension", "cephes")
+c_model_dir = os.path.join("src", "sas", "models", "c_extension", "c_models")
+smear_dir = os.path.join("src", "sas", "models", "c_extension", "c_smearer")
+gen_dir = os.path.join("src", "sas", "models", "c_extension", "c_gen")
+wrapper_dir = os.path.join("src", "sas", "models", "c_extension", "python_wrapper", "generated")
+model_dir = os.path.join("src", "sas", "models")
 
 if os.path.isdir(wrapper_dir):
     for file in os.listdir(wrapper_dir): 
@@ -169,7 +169,7 @@ if os.path.isdir(wrapper_dir):
         os.remove(file_path)
 else:
     os.makedirs(wrapper_dir)
-sys.path.append(os.path.join("src", "sans", "models", "c_extension", "python_wrapper"))
+sys.path.append(os.path.join("src", "sas", "models", "c_extension", "python_wrapper"))
 from wrapping import generate_wrappers
 generate_wrappers(header_dir=includedir,
                   output_dir=model_dir,
@@ -208,11 +208,11 @@ append_file(file_list=model_sources, dir_path=wrapper_dir)
 smear_sources = []
 append_file(file_list=smear_sources, dir_path=smear_dir)
         
-package_dir["sans.models"] = model_dir
-package_dir["sans.models.sans_extension"] = os.path.join("src", "sans", "models", "sans_extension")
-package_data['sans.models'] = [os.path.join('media', "*.*")]
-package_data['sans.models'] += [os.path.join('media', 'img', "*.*")]
-packages.extend(["sans.models", "sans.models.sans_extension"])
+package_dir["sas.models"] = model_dir
+package_dir["sas.models.sans_extension"] = os.path.join("src", "sas", "models", "sans_extension")
+package_data['sas.models'] = [os.path.join('media', "*.*")]
+package_data['sas.models'] += [os.path.join('media', 'img', "*.*")]
+packages.extend(["sas.models", "sas.models.sans_extension"])
     
 smearer_sources = [os.path.join(smear_dir, "smearer.cpp"),
                   os.path.join(smear_dir, "smearer_module.cpp")]
@@ -222,7 +222,7 @@ if os.name == 'nt':
     geni_sources.append(os.path.join(igordir, "winFuncs.c"))
 
 c_models = [ 
-    Extension("sans.models.sans_extension.c_models",
+    Extension("sas.models.sans_extension.c_models",
         sources=model_sources,
         include_dirs=[
             igordir, includedir, c_model_dir, numpy_incl_path, cephes_dir
@@ -230,12 +230,12 @@ c_models = [
     ),
 
     # Smearer extension
-    Extension("sans.models.sans_extension.smearer",
+    Extension("sas.models.sans_extension.smearer",
         sources=smearer_sources,
         include_dirs=[igordir, smear_dir, numpy_incl_path],
     ),
                     
-    Extension("sans.models.sans_extension.smearer2d_helper",
+    Extension("sas.models.sans_extension.smearer2d_helper",
         sources=[
             os.path.join(smear_dir, "smearer2d_helper_module.cpp"),
             os.path.join(smear_dir, "smearer2d_helper.cpp"),
@@ -243,7 +243,7 @@ c_models = [
         include_dirs=[smear_dir, numpy_incl_path],
     ),
                     
-    Extension("sans.models.sans_extension.sld2i",
+    Extension("sas.models.sans_extension.sld2i",
         sources=[
             os.path.join(gen_dir, "sld2i_module.cpp"),
             os.path.join(gen_dir, "sld2i.cpp"),

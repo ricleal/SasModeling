@@ -42,7 +42,7 @@ Run Tests:
 
 ```
 cd test
-python run_one.py sansmodels/test/utest_models.py
+python run_one.py sasmodels/test/utest_models.py
 ```
 
 *Note:*

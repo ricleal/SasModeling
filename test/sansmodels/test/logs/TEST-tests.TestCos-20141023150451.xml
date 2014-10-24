@@ -1,9 +1,0 @@
-<?xml version="1.0" ?>
-<testsuite errors="0" failures="0" name="tests.TestCos-20141023150451" tests="2" time="0.001">
-	<testcase classname="tests.TestCos" name="test1D" time="0.001"/>
-	<testcase classname="tests.TestCos" name="test2D" time="0.000"/>
-	<system-out>
-<![CDATA[]]>	</system-out>
-	<system-err>
-<![CDATA[]]>	</system-err>
-</testsuite>

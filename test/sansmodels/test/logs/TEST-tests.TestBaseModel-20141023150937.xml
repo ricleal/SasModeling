@@ -1,9 +1,0 @@
-<?xml version="1.0" ?>
-<testsuite errors="0" failures="0" name="tests.TestBaseModel-20141023150937" tests="1" time="0.000">
-	<testcase classname="tests.TestBaseModel" name="test_removed_attrs" time="0.000"/>
-	<system-out>
-<![CDATA[found
-]]>	</system-out>
-	<system-err>
-<![CDATA[]]>	</system-err>
-</testsuite>
