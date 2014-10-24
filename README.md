@@ -31,7 +31,7 @@ To generate the html documentation:
 python setup.py docs
 ```
 
-For the now the index is not working. The generated model docs are available in the folder:
+For now the index is not working. The generated model docs are available in the folder:
 
 ```
 SasModeling/docs/sphinx-docs/build/html/user/models/model_functions.html
@@ -57,7 +57,19 @@ needs:
 run.py
 ```
 
+Run all tests:
+
+```
+cd test
+for i in `ls sasmodels/test/*.py`; do
+  python run_one.py $i
+  if [ $? -ne 0 ]; then
+    echo "$* failed with exit code $?"
+  fi
+done
+```
+
+
 Notes:
 ------
-- Removed the build_sphinx (but non the media files in the src/sans)
- - If to include, one needs to copy over the sasview docs/sphinx-docs folder and change the setup.py
+- Test ```sasmodels/test/utest_smearing.py``` is not working as it needs SasView loaders.
