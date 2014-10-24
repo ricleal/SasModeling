@@ -23,6 +23,20 @@ Uninstall:
 cat files.txt | xargs rm -rf
 ```
 
+Documentation:
+--------------
+To generate the html documentation:
+
+```
+python setup.py docs
+```
+
+For the now the index is not working. The generated model docs are available in the folder:
+
+```
+SasModeling/docs/sphinx-docs/build/html/user/models/model_functions.html
+```
+
 Run Tests:
 ----------
 

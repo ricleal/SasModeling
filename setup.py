@@ -8,6 +8,9 @@ from setuptools import setup, Extension
 from distutils.command.build_ext import build_ext
 from distutils.core import Command
 
+sys.path.append("docs/sphinx-docs")
+import build_sphinx
+
 try:
     from numpy.distutils.misc_util import get_numpy_include_dirs
     NUMPY_INC = get_numpy_include_dirs()[0]
@@ -130,11 +133,25 @@ class build_ext_subclass(build_ext):
 # Other
 numpy_incl_path = os.path.join(NUMPY_INC, "numpy")
 
+class BuildSphinxCommand(Command):
+    description = "Build Sphinx documentation."
+    user_options = []
+
+    def initialize_options(self):
+        self.cwd = None
+
+    def finalize_options(self):
+        self.cwd = os.getcwd()
+
+    def run(self):        
+        build_sphinx.clean()
+        build_sphinx.retrieve_user_docs()
+        build_sphinx.apidoc()
+        build_sphinx.build()
+
 # sans module
 package_dir["sans"] = os.path.join("src", "sans")
 packages.append("sans")
-
-
 
 # Sans models
 includedir = os.path.join("src", "sans", "models", "include")
@@ -283,5 +300,6 @@ setup(
     ext_modules=ext_modules,
     install_requires=required,
     zip_safe=False,
-    cmdclass={'build_ext': build_ext_subclass}
+    cmdclass={'build_ext': build_ext_subclass,
+                'docs': BuildSphinxCommand}
     )   

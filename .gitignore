@@ -52,3 +52,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Sphynx docs
+docs/sphinx-docs/source/dev/
+docs/sphinx-docs/source/user/
