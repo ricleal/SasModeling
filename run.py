@@ -95,6 +95,10 @@ def prepare():
 
     #print "\n".join(sys.path)
     #from sas.models import SphereModel
+    
+    ## 
+    try: import sans.dataloader
+    except: print "**************** sans.dataloader not available *****************"
 
 def run():
     from multiprocessing import freeze_support

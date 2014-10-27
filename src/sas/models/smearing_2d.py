@@ -151,7 +151,7 @@ class Smearer2D:
         #len_datay = len(self.qy_data)
         if self._engine == 'c' and self.coords == 'polar':
             try:
-import sas.models.sans_extension.smearer2d_helper as smearer2dc
+                import sas.models.sans_extension.smearer2d_helper as smearer2dc
                 smearc = smearer2dc.new_Smearer_helper(self.qx_data, 
                                               self.qy_data,
                                               self.dqx_data, self.dqy_data,

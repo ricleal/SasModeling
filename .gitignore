@@ -57,4 +57,5 @@ target/
 docs/sphinx-docs/source/dev/
 docs/sphinx-docs/source/user/
 test/sasmodels/test/logs/
+*.md.html
 

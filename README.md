@@ -72,4 +72,16 @@ done
 
 Notes:
 ------
-- Test ```sasmodels/test/utest_smearing.py``` is not working as it needs SasView loaders.
+
+Test:
+```
+cd test
+python run_one.py sasmodels/test/utest_smearing.py
+```
+is not working as it needs SasView loaders. To make it work, SASview must be installed, e.g., as local library:
+```
+cd sasview-code
+python setup.py install --user --record files.txt
+```
+
+
