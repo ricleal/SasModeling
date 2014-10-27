@@ -149,9 +149,22 @@ class BuildSphinxCommand(Command):
         build_sphinx.apidoc()
         build_sphinx.build()
 
+
+
 # sas module
 package_dir["sas"] = os.path.join("src", "sas")
 packages.append("sas")
+
+# New sas models
+package_dir["sasmodels"] = os.path.join("src", "sasmodels")
+packages.append("sasmodels")
+package_dir["sasmodels.models"] = os.path.join("src", "sasmodels","models")
+packages.append("sasmodels.models")
+
+package_data['sasmodels.models'] = [os.path.join('', "*.c")]
+package_data['sasmodels.models'] += [os.path.join('lib', "*.*")]
+#package_data['sasmodels.models'] += [os.path.join('img', "*.*")]
+
 
 # sas models
 includedir = os.path.join("src", "sas", "models", "include")
@@ -169,6 +182,7 @@ if os.path.isdir(wrapper_dir):
         os.remove(file_path)
 else:
     os.makedirs(wrapper_dir)
+
 sys.path.append(os.path.join("src", "sas", "models", "c_extension", "python_wrapper"))
 from wrapping import generate_wrappers
 generate_wrappers(header_dir=includedir,
