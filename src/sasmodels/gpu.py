@@ -133,7 +133,10 @@ class GpuEnvironment(object):
     GPU context, with possibly many devices, and one queue per device.
     """
     def __init__(self):
-        self.context = cl.create_some_context()
+        
+        
+        self._set_prefered_context()
+        
         self.queues = [cl.CommandQueue(self.context, d)
                        for d in self.context.devices]
         self.boundary = max(d.min_data_type_align_size
@@ -151,6 +154,27 @@ class GpuEnvironment(object):
         if name in self.compiled:
             self.compiled[name].release()
             del self.compiled[name]
+    
+    def _set_prefered_context(self,preferedDeviceType = cl.device_type.GPU):
+        """
+        Assuming that only one platform is available! 
+        """
+        platforms = cl.get_platforms()
+        if len(platforms) > 1:
+            print "Warning : Several OpenCL platforms available! Using the first!"
+        
+        devices = platforms[0].get_devices(device_type=preferedDeviceType)
+        if len(devices) > 1:
+            print "Warning : Several OpenCL devices available! Using the first prefered type!"
+        
+        if devices is not None:
+            thisDevice = devices[0]
+            print "OpenCL : Using Platform",platforms[0].name ,"and device", thisDevice.name
+            self.context = cl.Context(devices=[thisDevice])
+        else:
+            self.context = cl.create_some_context()
+            
+        
 
 class GpuModel(object):
     """
