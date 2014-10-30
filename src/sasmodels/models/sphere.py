@@ -73,11 +73,11 @@ P(q)=(scale/V)*[3V(sld-solvent_sld)*(sin(qR)-qRcos(qR))
 parameters = [
 #   [ "name", "units", default, [lower, upper], "type",
 #     "description" ],
-    [ "sld", "1e-6/Ang^2", 1, [-inf,inf], "",
+    [ "sld", "1e-6/Ang^2", 2, [-inf,inf], "",
       "Layer scattering length density" ],
-    [ "solvent_sld", "1e-6/Ang^2", 6, [-inf,inf], "",
+    [ "solvent_sld", "1e-6/Ang^2", 1, [-inf,inf], "",
       "Solvent scattering length density" ],
-    [ "radius", "Ang",  50, [0, inf], "volume",
+    [ "radius", "Ang",  60, [0, inf], "volume",
       "Sphere radius" ],
     ]
 
