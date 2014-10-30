@@ -28,15 +28,10 @@ from pyopencl import mem_flags as mf
 
 from . import gen
 
-F32_DEFS = """\
-#define REAL(x) (x##f)
-#define real float
-"""
-
 F64_DEFS = """\
-#pragma OPENCL EXTENSION cl_khr_fp64: enable
-#define REAL(x) (x)
-#define real double
+#ifdef cl_khr_fp64
+#  pragma OPENCL EXTENSION cl_khr_fp64: enable
+#endif
 """
 
 # The max loops number is limited by the amount of local memory available
@@ -112,7 +107,9 @@ def compile_model(context, source, dtype):
     if dtype==gen.F64 and not all(has_double(d) for d in context.devices):
         raise RuntimeError("Double precision not supported for devices")
 
-    header = F64_DEFS if dtype == gen.F64 else F32_DEFS
+    header = F64_DEFS if dtype == gen.F64 else ""
+    if dtype == gen.F32:
+        source = gen.use_single(source)
     # Note: USE_SINCOS makes the intel cpu slower under opencl
     if context.devices[0].type == cl.device_type.GPU:
         header += "#define USE_SINCOS\n"
@@ -133,10 +130,7 @@ class GpuEnvironment(object):
     GPU context, with possibly many devices, and one queue per device.
     """
     def __init__(self):
-        
-        
         self._set_prefered_context()
-        
         self.queues = [cl.CommandQueue(self.context, d)
                        for d in self.context.devices]
         self.boundary = max(d.min_data_type_align_size
