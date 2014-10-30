@@ -84,4 +84,21 @@ cd sasview-code
 python setup.py install --user --record files.txt
 ```
 
+Compare new vs old sas models:
+------------------------------
+Bumps ([github.com/bumps/bumps](https://github.com/bumps/bumps)) is needed for this to work!
+
+```
+cd src/sasmodels
+
+for M in capcyl cscyl cyl ell ell3 lam sph; do 
+	echo Model $M;
+	python compare.py -noplot -sasview -double -1d $M;
+done
+```
+for M in capcyl cscyl cyl ell ell3 lam sph; do 
+	echo Model $M;
+	python compare.py -noplot -sasview -single -2d $M;
+done
+
 
