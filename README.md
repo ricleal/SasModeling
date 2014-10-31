@@ -91,14 +91,17 @@ Bumps ([github.com/bumps/bumps](https://github.com/bumps/bumps)) is needed for t
 ```
 cd src/sasmodels
 
+# 1D
 for M in capcyl cscyl cyl ell ell3 lam sph; do 
 	echo Model $M;
 	python compare.py -noplot -sasview -double -1d $M;
 done
-```
+
+#2D
 for M in capcyl cscyl cyl ell ell3 lam sph; do 
 	echo Model $M;
 	python compare.py -noplot -sasview -single -2d $M;
 done
+```
 
 
