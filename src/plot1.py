@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/Users/rhf/git/SasModeling/build/temp.macosx-10.11-x86_64-2.7/src/sas')
+sys.path.append('../build/temp.macosx-10.11-x86_64-2.7/src/sas')
 
 """
 
